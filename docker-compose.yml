@@ -3,7 +3,7 @@ services:
     build: infra/docker/ssh-server
     privileged: true
     entrypoint: /bin/bash -c "/usr/sbin/sshd -D -f /etc/ssh/sshd_config & dockerd"
-    container_name: ssh-server
+    container_name: enviroment-server
     hostname: enviroment
     ports:
       - 2222:22
