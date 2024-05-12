@@ -4,7 +4,7 @@ services:
     privileged: true
     entrypoint: /bin/bash -c "/usr/sbin/sshd -D -f /etc/ssh/sshd_config & dockerd"
     container_name: enviroment-server
-    hostname: enviroment
+    hostname: "${HOSTNAME}->env"
     restart: always
     ports:
       - 2222:22
