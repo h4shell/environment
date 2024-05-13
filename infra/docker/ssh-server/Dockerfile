@@ -5,9 +5,11 @@ RUN useradd -m h4shell
 COPY .gitconfig /home/h4shell/
 COPY .bashrc /home/h4shell/
 COPY tunnel /usr/bin/
-COPY authorized_keys /home/h4shell/.ssh/
-RUN chmod 600 /home/h4shell/.ssh/authorized_keys
-RUN chown -R h4shell:h4shell /home/h4shell/.ssh/
+RUN mkdir /home/h4shell/.ssh
+RUN ssh-keygen -t rsa -b 4096 -f /home/h4shell/.ssh/id_rsa_env -N ''
+
+RUN chown -R h4shell:h4shell /home/h4shell/.ssh
+
 RUN usermod -aG root h4shell
 RUN usermod -aG sudo h4shell
 RUN echo 'h4shell:password' | chpasswd

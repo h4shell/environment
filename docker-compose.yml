@@ -8,3 +8,13 @@ services:
     restart: always
     ports:
       - 2222:22
+    volumes:
+      - ssh:/home/h4shell/.ssh
+
+volumes:
+  ssh:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/h4shell/
