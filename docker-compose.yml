@@ -2,7 +2,7 @@ services:
   enviroment-server:
     build: infra/docker/ssh-server
     privileged: true
-    entrypoint: /bin/bash -c "/usr/sbin/sshd -D -f /etc/ssh/sshd_config & dockerd"
+    entrypoint: /bin/bash -c "/usr/sbin/sshd -D -f /etc/ssh/sshd_config & chown -R h4shell:h4shell /home/h4shell/.ssh & dockerd"
     container_name: enviroment-server
     hostname: "${HOSTNAME}->env"
     restart: always
@@ -10,6 +10,7 @@ services:
       - 2222:22
     volumes:
       - ssh:/home/h4shell/.ssh
+      - home:/home
 
 volumes:
   ssh:
@@ -17,4 +18,9 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/h4shell/
+      device: ./ssh
+
+  home:
+    driver: local
+    
+    

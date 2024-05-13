@@ -7,7 +7,7 @@ COPY .bashrc /home/h4shell/
 COPY tunnel /usr/bin/
 RUN mkdir /home/h4shell/.ssh
 RUN ssh-keygen -t rsa -b 4096 -f /home/h4shell/.ssh/id_rsa_env -N ''
-
+RUN mv /home/h4shell/.ssh/id_rsa_env.pub /home/h4shell/.ssh/authorized_keys
 RUN chown -R h4shell:h4shell /home/h4shell/.ssh
 
 RUN usermod -aG root h4shell
