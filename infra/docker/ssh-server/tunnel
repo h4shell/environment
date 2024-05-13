@@ -10,4 +10,4 @@ fi
 port=$1
 
 # Esegui il comando SSH con la porta fornita
-ssh -R 80:localhost:${port} nokey@localhost.run
+ssh -R 80:localhost:${port} nokey@localhost.run | .lhr.life
