@@ -4,14 +4,6 @@ Il repository "environment" ospita le configurazioni e gli script per creare un 
 
 ### Utilizzo
 
-Modifica le variabili nella sezione environment del docker-compose.yml
-
-```
-environment:
-    - GIT_EMAIL=fw1987@gmail.com
-    - GIT_USER=Lorenzo Fornara
-```
-
 esegui
 
 ```
@@ -36,8 +28,7 @@ Host dind_enviroment_localhost
 Una volta collegato dalla bash puoi configurare il tuo account git semplicemente digitando nella console
 
 ```
-┌─[user@fedora-desktop->env]─[~]
-└──╼ $ gitconfig
+$ ./scripts/gitcongig.sh
 ```
 
 #### tunnel
