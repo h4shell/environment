@@ -7,8 +7,8 @@ services:
     hostname: "${HOSTNAME}->env"
     restart: always
     environment:
-      - GIT_EMAIL=fw1987@gmail.com
-      - GIT_USER=Lorenzo Fornara
+      - GIT_EMAIL='fw1987@gmail.com'
+      - GIT_NAME='Lorenzo Fornara'
     ports:
       - 2222:22
     volumes:

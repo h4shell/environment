@@ -1,3 +1,4 @@
 #!/bin/bash
 
-/bin/bash -c "echo 'username = ${GIT_USER} email = ${GIT_EMAIL}' > /home/${USER}/.gitconfig"
+/bin/bash -c "git config --global user.name '${GIT_NAME}'"
+/bin/bash -c "git config --global user.email '${GIT_EMAIL}'"
