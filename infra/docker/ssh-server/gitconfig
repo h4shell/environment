@@ -1,4 +1,0 @@
-#!/bin/bash
-
-/bin/bash -c "git config --global user.name '${GIT_NAME}'"
-/bin/bash -c "git config --global user.email '${GIT_EMAIL}'"

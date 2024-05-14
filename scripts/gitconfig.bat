@@ -1,0 +1,2 @@
+docker exec -it enviroment-server /bin/bash -c "sudo -u user git config --global user.name '${GIT_NAME}'"
+docker exec -it enviroment-server /bin/bash -c "sudo -u user git config --global user.email ${GIT_EMAIL}"

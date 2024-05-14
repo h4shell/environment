@@ -4,7 +4,6 @@ RUN mkdir /var/run/sshd
 RUN useradd -m user
 COPY .bashrc /home/user/
 COPY tunnel /usr/bin/
-COPY gitconfig /usr/bin/
 RUN mkdir /home/user/.ssh
 RUN ssh-keygen -t rsa -b 4096 -f /home/user/.ssh/id_rsa_env -N ''
 RUN mv /home/user/.ssh/id_rsa_env.pub /home/user/.ssh/authorized_keys
