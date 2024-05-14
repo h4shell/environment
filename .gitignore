@@ -1,2 +1,2 @@
-ssh/id_rsa_env
 authorized_keys
+/ssh/
