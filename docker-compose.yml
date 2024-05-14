@@ -6,9 +6,6 @@ services:
     container_name: enviroment-server
     hostname: "${HOSTNAME}->env"
     restart: always
-    environment:
-      - GIT_EMAIL='fw1987@gmail.com'
-      - GIT_NAME='Lorenzo Fornara'
     ports:
       - 2222:22
     volumes:

@@ -7,7 +7,7 @@ COPY tunnel /usr/bin/
 RUN mkdir /home/user/.ssh
 RUN ssh-keygen -t rsa -b 4096 -f /home/user/.ssh/id_rsa_env -N ''
 RUN mv /home/user/.ssh/id_rsa_env.pub /home/user/.ssh/authorized_keys
-RUN chown -R user:user /home/user/.ssh
+RUN chown -R user:user /home/user/
 RUN usermod -aG root user
 RUN usermod -aG sudo user
 RUN echo 'user:password' | chpasswd
