@@ -9,7 +9,6 @@ services:
     ports:
       - 2222:22
     volumes:
-      - ssh:/home/user/.ssh
       - home:/home
 volumes:
   ssh:
