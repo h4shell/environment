@@ -39,10 +39,15 @@ Il file `Dockerfile` definisce la configurazione per la creazione dell'immagine 
 - Impostazione della password per l'utente `user`.
 - Modifica della shell predefinita dell'utente `user`.
 
-
 ### Utilizzo
 
 Per utilizzare questo ambiente assicurati di avere docker e docker compose installati all'ultima versione.
+
+ignora localmente il file ssh/REMOVE_ME.txt con il seguente comando
+
+```
+$ git update-index --assume-unchanged ./ssh/REMOVE_ME.txt
+```
 
 esegui
 
