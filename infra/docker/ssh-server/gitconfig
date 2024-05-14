@@ -1,0 +1,3 @@
+#!/bin/bash
+
+/bin/bash -c "echo 'username = ${GIT_USER} email = ${GIT_EMAIL}' > /home/${USER}/.gitconfig"

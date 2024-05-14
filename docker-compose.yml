@@ -6,12 +6,14 @@ services:
     container_name: enviroment-server
     hostname: "${HOSTNAME}->env"
     restart: always
+    environment:
+      - GIT_EMAIL=fw1987@gmail.com
+      - GIT_USER=Lorenzo Fornara
     ports:
       - 2222:22
     volumes:
       - ssh:/home/user/.ssh
       - home:/home
-
 volumes:
   ssh:
     driver: local
