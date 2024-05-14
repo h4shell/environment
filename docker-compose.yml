@@ -15,10 +15,6 @@ services:
 volumes:
   ssh:
     driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ./ssh
 
   home:
     driver: local
