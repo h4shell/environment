@@ -11,10 +11,6 @@ services:
     volumes:
       - home:/home
 volumes:
-  ssh:
-    driver: local
 
   home:
     driver: local
-    
-    
