@@ -1,4 +1,4 @@
-
+#!/bin/bash
 
 docker cp enviroment-server:/home/user/.ssh/id_rsa_env /home/user/.ssh/
 
