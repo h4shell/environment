@@ -2,7 +2,10 @@ services:
   enviroment-server:
     build: infra/docker/ssh-server
     privileged: true
-    entrypoint: /bin/bash -c "/usr/sbin/sshd -D -f /etc/ssh/sshd_config & chown -R user:user /home/user/.ssh & dockerd"
+    environment:
+      - GIT_NAME=Lorenzo Fornara
+      - GIT_EMAIL=fw1987@gmail.com
+    entrypoint: /usr/bin/entrypoint.sh
     container_name: enviroment-server
     hostname: "${HOSTNAME}->env"
     restart: always
