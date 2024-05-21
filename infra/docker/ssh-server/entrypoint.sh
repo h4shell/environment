@@ -5,6 +5,6 @@ echo -e "[user]\n\
         > /home/user/.gitconfig
 
 chown -R user:user /home/user/
-/usr/sbin/sshd -D -f /etc/ssh/sshd_config
 
+/usr/sbin/sshd -D -f /etc/ssh/sshd_config &&
 dockerd
