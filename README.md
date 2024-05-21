@@ -23,6 +23,7 @@ Host dind_enviroment_localhost
     HostName 127.0.0.1
     User user
     Port 2222
+    IdentityFile ~/.ssh/id_rsa_env
 ```
 
 Una volta collegato dalla bash puoi configurare il tuo account git semplicemente digitando nella console
