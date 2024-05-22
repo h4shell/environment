@@ -9,6 +9,7 @@ services:
     container_name: enviroment-server
     hostname: "${HOSTNAME}->env"
     restart: always
+    mem_limit: 512m
     ports:
       - 2222:22
     volumes:
