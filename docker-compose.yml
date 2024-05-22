@@ -7,7 +7,7 @@ services:
       - GIT_EMAIL=fw1987@gmail.com
     entrypoint: /usr/bin/entrypoint.sh
     container_name: enviroment-server
-    hostname: "${HOSTNAME}->env"
+    hostname: "${HOST}->env"
     restart: always
     ports:
       - 2222:22
