@@ -1,6 +1,7 @@
 services:
   enviroment-server:
     build: infra/docker/ssh-server
+    privileged: true
     environment:
       - GIT_NAME=Lorenzo Fornara
       - GIT_EMAIL=fw1987@gmail.com
