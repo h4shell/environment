@@ -1,7 +1,6 @@
 services:
   enviroment-server:
     build: infra/docker/ssh-server
-    privileged: true
     environment:
       - GIT_NAME=Lorenzo Fornara
       - GIT_EMAIL=fw1987@gmail.com
@@ -9,7 +8,8 @@ services:
     container_name: enviroment-server
     hostname: "${HOSTNAME}->env"
     restart: always
-    mem_limit: 512m
+    mem_limit: 16g
+    memswap_limit: 16g
     ports:
       - 2222:22
     volumes:
