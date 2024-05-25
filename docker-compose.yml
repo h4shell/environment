@@ -8,7 +8,6 @@ services:
     entrypoint: /usr/bin/entrypoint.sh
     container_name: enviroment-server
     hostname: "${HOST}${HOSTNAME}->env"
-    restart: always
     mem_limit: 16g
     memswap_limit: 16g
     ports:
