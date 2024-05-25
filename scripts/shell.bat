@@ -1,1 +1,1 @@
-docker exec -it enviroment-server /bin/bash
+docker exec -it environment-server /bin/bash

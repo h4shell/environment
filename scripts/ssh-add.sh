@@ -1,8 +1,8 @@
 #!/bin/bash
 
-docker cp enviroment-server:/home/user/.ssh/id_rsa_env /home/$USER/.ssh/
+docker cp environment-server:/home/user/.ssh/id_rsa_env /home/$USER/.ssh/
 touch /home/$USER/.ssh/config
-echo 'Host enviroment
+echo 'Host environment
         HostName 127.0.0.1
         User user
         Port 2222

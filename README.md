@@ -16,10 +16,10 @@ Per installare la chiave nell'host è sufficiente
 $ ./scripts/ssh-add.sh
 ```
 
-per collegarti all'enviroment apri VSCode scarica l'estensione "Remote explorer" aggiungi un nuovo server SSH e inserisci questi parametri
+per collegarti all'environment apri VSCode scarica l'estensione "Remote explorer" aggiungi un nuovo server SSH e inserisci questi parametri
 
 ```
-Host dind_enviroment_localhost
+Host dind_environment_localhost
     HostName 127.0.0.1
     User user
     Port 2222

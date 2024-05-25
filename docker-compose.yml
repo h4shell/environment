@@ -1,12 +1,12 @@
 services:
-  enviroment-server:
+  environment-server:
     build: infra/docker/ssh-server
     privileged: true
     environment:
       - GIT_NAME=Lorenzo Fornara
       - GIT_EMAIL=fw1987@gmail.com
     entrypoint: /usr/bin/entrypoint.sh
-    container_name: enviroment-server
+    container_name: environment-server
     hostname: "${HOST}${HOSTNAME}->env"
     mem_limit: 16g
     memswap_limit: 16g
