@@ -11,7 +11,6 @@
 
 # User name
 #change your user name here
-user_name="termux"
 
 # Default editor
 editor="nano"
@@ -30,7 +29,7 @@ export SUDO_EDITOR=$editor
 export VISUAL="vim"
 
 # USER
-export USER=$user_name
+
 
 # Path
 export ETC="/data/data/com.termux/files/usr/etc"
