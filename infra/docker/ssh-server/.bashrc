@@ -1,106 +1,182 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+#######################################
+#                                     #
+# Termux bash.bashrc                  #
+# Modified by: KNIGHTFALL             #
+#                                     #
+# Last modified: 2023/09/18           #
+#                                     #
+#######################################
 
-# If not running interactively, don't do anything
-[ -z "$PS1" ] && return
+#### Global variables #################
 
-# don't put duplicate lines in the history. See bash(1) for more options
-# ... or force ignoredups and ignorespace
-HISTCONTROL=ignoredups:ignorespace
+# User name
+#change your user name here
+user_name="termux"
+
+# Default editor
+editor="nano"
+
+#### Environment variables ############
+
+# `grep default` highlight color
+export GREP_COLOR="1;32"
+
+# Colored man
+export MANPAGER="less -R --use-color -Dd+g -Du+b"
+
+# EDITOR
+export EDITOR=$editor
+export SUDO_EDITOR=$editor
+export VISUAL="vim"
+
+# USER
+export USER=$user_name
+
+# Path
+export ETC="/data/data/com.termux/files/usr/etc"
+
+#### History settings #################
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+
+# load results of history substitution into the readline editing buffer
+shopt -s histverify
+
+# don't put duplicate lines or lines starting with space in the history
+HISTCONTROL=ignoreboth
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+#### Autocompletion ###################
 
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+# cycle through all matches with 'TAB' key
+bind 'TAB:menu-complete'
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
+# necessary for programmable completion
+shopt -s extglob
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color) color_prompt=yes;;
-esac
+# cd when entering just a path
+shopt -s autocd
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+#### Prompt ###########################
+sym="㉿" #symbol of prompt
+bar_cr="34" #color of bars
+name_cr="37" #color of user & host
+end_cr="37" #color of prompt end
+dir_cr="36" #color of current directory
 
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
+PS1='\[\033[0;${bar_cr}m\]┌──(\[\033[1;${name_cr}m\]${user_name}${sym}\h\[\033[0;${bar_cr}m\])-[\[\033[0;${dir_cr}m\]\w\[\033[0;${bar_cr}m\]]
+\[\033[0;${bar_cr}m\]└─\[\033[1;${end_cr}m\]\$\[\033[0m\] '
 
-if [ "$color_prompt" = yes ]; then
-    PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
-    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
-    #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
+#### Aliases ##########################
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
-    #PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
-
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
+# enable color support of ls, grep and ip, also add handy aliases
+if [[ -x /usr/bin/dircolors ]]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
+	alias ls='ls --color=auto'
     alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+    alias diff='diff --color=auto'
+    alias ip='ip -color'
 fi
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+# common commands
+alias ..='cd ..'
+alias .2='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+alias lm='ls | more'
+alias ll='ls -lFh'
+alias la='ls -alFh --group-directories-first'
+alias l1='ls -1F --group-directories-first'
+alias l1m='ls -1F --group-directories-first | more'
+alias lh='ls -ld .??*'
+alias lsn='ls | cat -n'
+alias mkdir='mkdir -p -v'
+alias cp='cp --preserve=all'
+alias cpv='cp --preserve=all -v'
+alias cpr='cp --preserve=all -R'
+alias cpp='rsync -ahW --info=progress2'
+alias cs='printf "\033c"'
+alias q='exit'
+alias c='clear'
+alias count='find . -type f | wc -l'
+alias fbig='find . -size +128M -type f -printf '%s %p\n'| sort -nr | head -16'
+alias randir='mkdir -p ./$(cat /dev/urandom | tr -cd 'a-z' | head -c 4)/$(cat /dev/urandom | tr -cd 'a-z' | head -c 4)/'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+# memory/CPU
+alias df='df -Tha --total'
+alias free='free -mt'
+alias psa='ps auxf'
+alias cputemp='sensors | grep Core'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+# applications shortcuts
+alias myip='curl -s -m 5 https://ipleak.net/json/'
+alias e=$editor
+alias p='python3'
+alias w3mduck='w3m https://duckduckgo.com'
+alias ngrok='/data/data/com.termux/files/home/./ngrok'
+alias edit-bashrc=$editor' /data/data/com.termux/files/usr/etc/bash.bashrc'
+alias timenow='date +"%T"'
+alias datenow='date +"%d-%m-%Y"'
+alias untar='tar -zxvf '
+alias wget='wget -c '
+alias genpass='openssl rand -base64 12'
+alias phttp='python -m http.server 8000'
+alias kn='python /data/data/com.termux/files/home/keynote/keynote.py' # https://github.com/knightfall-cs/keynote
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+
+#### Functions ########################
+
+# If user has entered command which invokes non-available
+# utility, command-not-found will give a package suggestions.
+if [ -x /data/data/com.termux/files/usr/libexec/termux/command-not-found ]; then
+	command_not_found_handle() {
+		/data/data/com.termux/files/usr/libexec/termux/command-not-found "$1"
+	}
 fi
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-fi
+# nnn "cd on quit"
+n()
+{
+    # Block nesting of nnn in subshells
+    if [ -n $NNNVL ] && [ "${NNNVL:-0}" -ge 1 ]; then
+        echo "nnn is already running"
+        return
+    fi
+
+    # The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
+    # If NNN_TMPFILE is set to a custom path, it must be exported for nnn to
+    # see. To cd on quit only on ^G, remove the "export" and make sure not to
+    # use a custom path, i.e. set NNN_TMPFILE *exactly* as follows:
+    #   NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+
+    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
+    # stty start undef
+    # stty stop undef
+    # stty lwrap undef
+    # stty lnext undef
+
+    nnn "$@"
+
+    if [ -f "$NNN_TMPFILE" ]; then
+        . "$NNN_TMPFILE"
+        rm -f "$NNN_TMPFILE" > /dev/null
+    fi
+}
+
+#### Display ########################
+
+echo -e "\e[0;37m"
+clear                    _                                             _   '
+echo '  ___  _ __ __   __(_) _ __  ___   _ __   _ __ ___    ___  _ __  | |_ '
+echo ' / _ \| '_ \\ \ / /| || '__|/ _ \ | '_ \ | '_ ` _ \  / _ \| '_ \ | __|'
+echo '|  __/| | | |\ V / | || |  | (_) || | | || | | | | ||  __/| | | || |_ '
+echo '\___||_| |_| \_/  |_||_|   \___/ |_| |_||_| |_| |_| \___||_| |_| \__|'
+echo
+echo
+echo
