@@ -45,3 +45,6 @@ $ tunnel 8080
 - L'ambiente è configurato per scopi di sviluppo e testing. Assicurarsi di non esporre servizi sensibili pubblicamente.
 - Utilizzare una password sicura per l'utente `user`.
 - Prestare attenzione quando si utilizza il tunneling delle porte tramite servizi di terze parti come `localhost.run`.
+
+
+[![Docker Image CI](https://github.com/h4shell/environment/actions/workflows/docker-image.yml/badge.svg)](https://github.com/h4shell/environment/actions/workflows/docker-image.yml)
