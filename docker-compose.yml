@@ -4,7 +4,7 @@ services:
     privileged: true
     environment:
       - GIT_NAME=Lorenzo Fornara
-      - GIT_EMAIL=fw1987@gmail.com
+      - GIT_EMAIL=h4shell@gmail.com
     entrypoint: /usr/bin/entrypoint.sh
     container_name: environment-server
     hostname: "${HOST}${HOSTNAME}->env"
