@@ -7,7 +7,7 @@ services:
       - GIT_EMAIL=h4shell@gmail.com
     entrypoint: /usr/bin/entrypoint.sh
     container_name: environment-server
-    hostname: "${HOST}${HOSTNAME}->env"
+    hostname: "->env"
 #    mem_limit: 16g
 #    memswap_limit: 16g
     ports:
