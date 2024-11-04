@@ -29,7 +29,7 @@ Host dind_environment_localhost
 Una volta collegato dalla bash puoi configurare il tuo account git semplicemente digitando nella console
 
 ```
-$ ./scripts/gitcongig.sh
+$ ./scripts/gitconfig.sh
 ```
 
 #### tunnel
