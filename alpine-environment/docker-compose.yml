@@ -1,0 +1,18 @@
+services:
+  environment-alpine:
+    build: infra/docker/ssh-server
+    privileged: true
+    environment:
+      - GIT_NAME=Lorenzo Fornara
+      - GIT_EMAIL=h4shell@gmail.com
+    container_name: environment-alpine
+    hostname: "->alpine-env"
+    #    mem_limit: 16g
+    #    memswap_limit: 16g
+    ports:
+      - 2223:22
+    volumes:
+      - home:/home
+volumes:
+  home:
+    driver: local
