@@ -1,1 +1,0 @@
-docker exec -it environment-server /bin/bash
