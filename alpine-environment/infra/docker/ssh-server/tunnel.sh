@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Verifica che sia stato fornito almeno un parametro
 if [ $# -eq 0 ]; then
@@ -10,4 +10,4 @@ fi
 port=$1
 
 # Esegui il comando SSH con la porta fornita
-ssh -R 80:localhost:${port} nokey@localhost.run
+ssh -o StrictHostKeyChecking=no -t -R 80:localhost:${port} serveo.net
