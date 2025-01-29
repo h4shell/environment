@@ -11,7 +11,8 @@ services:
 #    mem_limit: 16g
 #    memswap_limit: 16g
     ports:
-      - 2222:22
+      - "2222:22"
+      - "2223:8080"
     volumes:
       - home:/home
   
@@ -19,7 +20,7 @@ services:
     image: wettyoss/wetty
     container_name: wetty-env
     ports:
-      - 20200:20200
+      - "20200:20200"
     entrypoint: node /usr/src/app/build/main.js -p 20200 --ssh-host environment-server --ssh-user user
     environment:
       - SSH_HOST=environment-server
