@@ -4,6 +4,7 @@ ARG username=user
 ARG password=password
 
 RUN apt-get update && apt-get install -y openssh-server git sudo
+RUN curl --location --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && sudo dpkg -i cloudflared.deb
 RUN mkdir /var/run/sshd
 RUN useradd -m ${username}
 COPY .bashrc /home/${username}/
