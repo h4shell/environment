@@ -2,8 +2,10 @@ FROM cruizba/ubuntu-dind
 
 ARG username=user
 ARG password=password
+ARG DIR=/usr/bin
 
 RUN apt-get update && apt-get install -y openssh-server git sudo
+RUN curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 RUN curl --location --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && sudo dpkg -i cloudflared.deb
 RUN mkdir /var/run/sshd
 RUN useradd -m ${username}
