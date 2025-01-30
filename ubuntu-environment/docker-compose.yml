@@ -12,7 +12,7 @@ services:
 #    memswap_limit: 16g
     ports:
       - "2222:22"
-      - "2223:8080"
+      - "2223:2223"
     volumes:
       - home:/home
   
