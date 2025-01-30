@@ -20,7 +20,7 @@ services:
     image: wettyoss/wetty
     container_name: wetty-env
     ports:
-      - "20200:20200"
+      - "2220:20200"
     entrypoint: node /usr/src/app/build/main.js -p 20200 --ssh-host environment-server --ssh-user user
     environment:
       - SSH_HOST=environment-server
@@ -31,7 +31,17 @@ services:
     container_name: cloudflare-env
     command: tunnel --url wetty-env:20200
 
+  firefox-env:
+    image: jlesage/firefox:latest
+    ports:
+      - "2221:5800"
+    container_name: firefox-env
+    volumes:
+      - firefox-env:/config
+
 volumes:
 
   home:
+    driver: local
+  firefox-env:
     driver: local
