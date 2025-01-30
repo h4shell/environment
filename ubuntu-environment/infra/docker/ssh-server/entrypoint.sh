@@ -7,5 +7,5 @@ echo -e "[user]\n\
 chown -R user:user /home/user/
 
 /usr/sbin/sshd -D -f /etc/ssh/sshd_config &
-su user -c "code-server --bind-addr 0.0.0.0:2223 --auth none" &
+su user -c "code-server --bind-addr 0.0.0.0:20223 --auth none" &
 dockerd
