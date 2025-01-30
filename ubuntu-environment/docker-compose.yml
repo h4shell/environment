@@ -43,5 +43,5 @@ volumes:
 
   home:
     driver: local
-  firefox-env:
-    driver: local
+#  firefox-env:
+#    driver: local
