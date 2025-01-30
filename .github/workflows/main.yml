@@ -16,5 +16,4 @@ jobs:
           cd ubuntu-environment
           docker compose up -d
           docker compose logs cloudflare-env | grep -o 'https://[^ ]*\.trycloudflare\.com' | head -n 1 | sed 's/$/\/wetty/'
-          docker compose logs cloudflare-env -f | grep -o 'https://[^ ]*\.trycloudflare\.com' | head -n 1 | sed 's/$/\/wetty/'
-          tail -f /dev/null
+          docker compose logs cloudflare-env -f
