@@ -31,13 +31,13 @@ services:
     container_name: cloudflare-env
     command: tunnel --url wetty-env:20200
 
-  firefox-env:
-    image: jlesage/firefox:latest
-    ports:
-      - "2221:5800"
-    container_name: firefox-env
-    volumes:
-      - firefox-env:/config
+#  firefox-env:
+#    image: jlesage/firefox:latest
+#    ports:
+#      - "2221:5800"
+#    container_name: firefox-env
+#    volumes:
+#      - firefox-env:/config
 
 volumes:
 
