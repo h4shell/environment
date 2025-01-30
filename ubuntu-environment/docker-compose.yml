@@ -29,8 +29,6 @@ services:
   cloudflare-env:
     image: cloudflare/cloudflared:latest
     container_name: cloudflare-env
-    ports:
-      - "8085:8080"
     command: tunnel --url wetty-env:20200
 
 volumes:
