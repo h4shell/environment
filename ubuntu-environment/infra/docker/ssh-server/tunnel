@@ -9,7 +9,7 @@ port=$1
 
 echo "Select your tunnel:"
 echo
-select opt in "Cloudflare" "Localhost.run"; do
+select opt in "Cloudflare" "Localhost.run" "Serveo.net"; do
     case $opt in
         "Cloudflare")
             cloudflared --url localhost:${port}
@@ -17,6 +17,10 @@ select opt in "Cloudflare" "Localhost.run"; do
             ;;
         "Localhost.run")
             ssh -R 80:localhost:${port} nokey@localhost.run
+            break
+            ;;
+        "Serveo.net")
+            ssh -R 80:localhost:${port} serveo.net
             break
             ;;
         *) echo "Opzione non valida";;
