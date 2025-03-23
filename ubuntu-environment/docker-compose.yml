@@ -25,6 +25,7 @@ services:
     environment:
       - SSH_HOST=environment-server
       - SSH_PORT=22
+      - BASE=/
   
   cloudflare-env:
     image: cloudflare/cloudflared:latest
